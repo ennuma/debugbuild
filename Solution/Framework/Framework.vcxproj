@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{CEE2AC00-B31A-4BA6-A51D-8E710F6C5A41}</ProjectGuid>
+    <RootNamespace>Framework</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Framework3\Audio\Audio.cpp" />
+    <ClCompile Include="..\..\Framework3\BaseApp.cpp" />
+    <ClCompile Include="..\..\Framework3\Config.cpp" />
+    <ClCompile Include="..\..\Framework3\CPU.cpp" />
+    <ClCompile Include="..\..\Framework3\Direct3D10\D3D10App.cpp" />
+    <ClCompile Include="..\..\Framework3\Direct3D10\Direct3D10Renderer.cpp" />
+    <ClCompile Include="..\..\Framework3\Direct3D11\D3D11App.cpp" />
+    <ClCompile Include="..\..\Framework3\Direct3D11\Direct3D11Renderer.cpp" />
+    <ClCompile Include="..\..\Framework3\Direct3D\D3DApp.cpp" />
+    <ClCompile Include="..\..\Framework3\Direct3D\Direct3DRenderer.cpp" />
+    <ClCompile Include="..\..\Framework3\GUI\Button.cpp" />
+    <ClCompile Include="..\..\Framework3\GUI\CheckBox.cpp" />
+    <ClCompile Include="..\..\Framework3\GUI\Dialog.cpp" />
+    <ClCompile Include="..\..\Framework3\GUI\DropDownList.cpp" />
+    <ClCompile Include="..\..\Framework3\GUI\Label.cpp" />
+    <ClCompile Include="..\..\Framework3\GUI\Slider.cpp" />
+    <ClCompile Include="..\..\Framework3\GUI\Widget.cpp" />
+    <ClCompile Include="..\..\Framework3\Imaging\Image.cpp" />
+    <ClCompile Include="..\..\Framework3\Linux\LinuxBase.cpp" />
+    <ClCompile Include="..\..\Framework3\Mac\MacBase.cpp" />
+    <ClCompile Include="..\..\Framework3\Math\Frustum.cpp" />
+    <ClCompile Include="..\..\Framework3\Math\MathTools.cpp" />
+    <ClCompile Include="..\..\Framework3\Math\Noise.cpp" />
+    <ClCompile Include="..\..\Framework3\Math\Reorder.cpp" />
+    <ClCompile Include="..\..\Framework3\Math\Scissor.cpp" />
+    <ClCompile Include="..\..\Framework3\Math\SIMD.cpp" />
+    <ClCompile Include="..\..\Framework3\Math\SphericalHarmonics.cpp" />
+    <ClCompile Include="..\..\Framework3\Math\Vector.cpp" />
+    <ClCompile Include="..\..\Framework3\OpenGL\OpenGLApp.cpp" />
+    <ClCompile Include="..\..\Framework3\OpenGL\OpenGLExtensions.cpp" />
+    <ClCompile Include="..\..\Framework3\OpenGL\OpenGLRenderer.cpp" />
+    <ClCompile Include="..\..\Framework3\Platform.cpp" />
+    <ClCompile Include="..\..\Framework3\Renderer.cpp" />
+    <ClCompile Include="..\..\Framework3\Util\BSP.cpp" />
+    <ClCompile Include="..\..\Framework3\Util\ConvexHull.cpp" />
+    <ClCompile Include="..\..\Framework3\Util\Model.cpp" />
+    <ClCompile Include="..\..\Framework3\Util\String.cpp" />
+    <ClCompile Include="..\..\Framework3\Util\TexturePacker.cpp" />
+    <ClCompile Include="..\..\Framework3\Util\Thread.cpp" />
+    <ClCompile Include="..\..\Framework3\Util\Tokenizer.cpp" />
+    <ClCompile Include="..\..\Framework3\Windows\WindowsBase.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Framework3\Audio\al.h" />
+    <ClInclude Include="..\..\Framework3\Audio\alc.h" />
+    <ClInclude Include="..\..\Framework3\Audio\alut.h" />
+    <ClInclude Include="..\..\Framework3\Audio\Audio.h" />
+    <ClInclude Include="..\..\Framework3\Audio\codec.h" />
+    <ClInclude Include="..\..\Framework3\Audio\ogg.h" />
+    <ClInclude Include="..\..\Framework3\Audio\os_types.h" />
+    <ClInclude Include="..\..\Framework3\Audio\vorbisfile.h" />
+    <ClInclude Include="..\..\Framework3\BaseApp.h" />
+    <ClInclude Include="..\..\Framework3\Config.h" />
+    <ClInclude Include="..\..\Framework3\CPU.h" />
+    <ClInclude Include="..\..\Framework3\Direct3D10\D3D10App.h" />
+    <ClInclude Include="..\..\Framework3\Direct3D10\Direct3D10Renderer.h" />
+    <ClInclude Include="..\..\Framework3\Direct3D11\D3D11App.h" />
+    <ClInclude Include="..\..\Framework3\Direct3D11\Direct3D11Renderer.h" />
+    <ClInclude Include="..\..\Framework3\Direct3D\D3DApp.h" />
+    <ClInclude Include="..\..\Framework3\Direct3D\Direct3DRenderer.h" />
+    <ClInclude Include="..\..\Framework3\GUI\Button.h" />
+    <ClInclude Include="..\..\Framework3\GUI\CheckBox.h" />
+    <ClInclude Include="..\..\Framework3\GUI\Dialog.h" />
+    <ClInclude Include="..\..\Framework3\GUI\DropDownList.h" />
+    <ClInclude Include="..\..\Framework3\GUI\Label.h" />
+    <ClInclude Include="..\..\Framework3\GUI\Slider.h" />
+    <ClInclude Include="..\..\Framework3\GUI\Widget.h" />
+    <ClInclude Include="..\..\Framework3\Imaging\Image.h" />
+    <ClInclude Include="..\..\Framework3\Imaging\jconfig.h" />
+    <ClInclude Include="..\..\Framework3\Imaging\jmorecfg.h" />
+    <ClInclude Include="..\..\Framework3\Imaging\jpeglib.h" />
+    <ClInclude Include="..\..\Framework3\Imaging\old\jconfig.h" />
+    <ClInclude Include="..\..\Framework3\Imaging\old\jmorecfg.h" />
+    <ClInclude Include="..\..\Framework3\Imaging\old\jpeglib.h" />
+    <ClInclude Include="..\..\Framework3\Imaging\png.h" />
+    <ClInclude Include="..\..\Framework3\Imaging\pngconf.h" />
+    <ClInclude Include="..\..\Framework3\Imaging\zconf.h" />
+    <ClInclude Include="..\..\Framework3\Imaging\zlib.h" />
+    <ClInclude Include="..\..\Framework3\Math\Frustum.h" />
+    <ClInclude Include="..\..\Framework3\Math\MathTools.h" />
+    <ClInclude Include="..\..\Framework3\Math\MyMath.h" />
+    <ClInclude Include="..\..\Framework3\Math\Noise.h" />
+    <ClInclude Include="..\..\Framework3\Math\Reorder.h" />
+    <ClInclude Include="..\..\Framework3\Math\Scissor.h" />
+    <ClInclude Include="..\..\Framework3\Math\SIMD.h" />
+    <ClInclude Include="..\..\Framework3\Math\SphericalHarmonics.h" />
+    <ClInclude Include="..\..\Framework3\Math\Vector.h" />
+    <ClInclude Include="..\..\Framework3\OpenGL\OpenGLApp.h" />
+    <ClInclude Include="..\..\Framework3\OpenGL\OpenGLExtensions.h" />
+    <ClInclude Include="..\..\Framework3\OpenGL\OpenGLRenderer.h" />
+    <ClInclude Include="..\..\Framework3\Platform.h" />
+    <ClInclude Include="..\..\Framework3\Renderer.h" />
+    <ClInclude Include="..\..\Framework3\Util\Array.h" />
+    <ClInclude Include="..\..\Framework3\Util\BSP.h" />
+    <ClInclude Include="..\..\Framework3\Util\ConvexHull.h" />
+    <ClInclude Include="..\..\Framework3\Util\Hash.h" />
+    <ClInclude Include="..\..\Framework3\Util\KdTree.h" />
+    <ClInclude Include="..\..\Framework3\Util\Model.h" />
+    <ClInclude Include="..\..\Framework3\Util\Queue.h" />
+    <ClInclude Include="..\..\Framework3\Util\String.h" />
+    <ClInclude Include="..\..\Framework3\Util\TexturePacker.h" />
+    <ClInclude Include="..\..\Framework3\Util\Thread.h" />
+    <ClInclude Include="..\..\Framework3\Util\Tokenizer.h" />
+    <ClInclude Include="..\..\Framework3\Windows\resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\Framework3\Windows\Resources.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\Framework3\readme.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
