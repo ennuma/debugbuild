@@ -38,7 +38,7 @@
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
@@ -114,12 +114,8 @@
     <ClCompile Include="..\..\Framework3\BaseApp.cpp" />
     <ClCompile Include="..\..\Framework3\Config.cpp" />
     <ClCompile Include="..\..\Framework3\CPU.cpp" />
-    <ClCompile Include="..\..\Framework3\Direct3D10\D3D10App.cpp" />
-    <ClCompile Include="..\..\Framework3\Direct3D10\Direct3D10Renderer.cpp" />
     <ClCompile Include="..\..\Framework3\Direct3D11\D3D11App.cpp" />
     <ClCompile Include="..\..\Framework3\Direct3D11\Direct3D11Renderer.cpp" />
-    <ClCompile Include="..\..\Framework3\Direct3D\D3DApp.cpp" />
-    <ClCompile Include="..\..\Framework3\Direct3D\Direct3DRenderer.cpp" />
     <ClCompile Include="..\..\Framework3\GUI\Button.cpp" />
     <ClCompile Include="..\..\Framework3\GUI\CheckBox.cpp" />
     <ClCompile Include="..\..\Framework3\GUI\Dialog.cpp" />
@@ -128,19 +124,13 @@
     <ClCompile Include="..\..\Framework3\GUI\Slider.cpp" />
     <ClCompile Include="..\..\Framework3\GUI\Widget.cpp" />
     <ClCompile Include="..\..\Framework3\Imaging\Image.cpp" />
-    <ClCompile Include="..\..\Framework3\Linux\LinuxBase.cpp" />
-    <ClCompile Include="..\..\Framework3\Mac\MacBase.cpp" />
     <ClCompile Include="..\..\Framework3\Math\Frustum.cpp" />
     <ClCompile Include="..\..\Framework3\Math\MathTools.cpp" />
     <ClCompile Include="..\..\Framework3\Math\Noise.cpp" />
     <ClCompile Include="..\..\Framework3\Math\Reorder.cpp" />
     <ClCompile Include="..\..\Framework3\Math\Scissor.cpp" />
-    <ClCompile Include="..\..\Framework3\Math\SIMD.cpp" />
     <ClCompile Include="..\..\Framework3\Math\SphericalHarmonics.cpp" />
     <ClCompile Include="..\..\Framework3\Math\Vector.cpp" />
-    <ClCompile Include="..\..\Framework3\OpenGL\OpenGLApp.cpp" />
-    <ClCompile Include="..\..\Framework3\OpenGL\OpenGLExtensions.cpp" />
-    <ClCompile Include="..\..\Framework3\OpenGL\OpenGLRenderer.cpp" />
     <ClCompile Include="..\..\Framework3\Platform.cpp" />
     <ClCompile Include="..\..\Framework3\Renderer.cpp" />
     <ClCompile Include="..\..\Framework3\Util\BSP.cpp" />
@@ -164,12 +154,8 @@
     <ClInclude Include="..\..\Framework3\BaseApp.h" />
     <ClInclude Include="..\..\Framework3\Config.h" />
     <ClInclude Include="..\..\Framework3\CPU.h" />
-    <ClInclude Include="..\..\Framework3\Direct3D10\D3D10App.h" />
-    <ClInclude Include="..\..\Framework3\Direct3D10\Direct3D10Renderer.h" />
     <ClInclude Include="..\..\Framework3\Direct3D11\D3D11App.h" />
     <ClInclude Include="..\..\Framework3\Direct3D11\Direct3D11Renderer.h" />
-    <ClInclude Include="..\..\Framework3\Direct3D\D3DApp.h" />
-    <ClInclude Include="..\..\Framework3\Direct3D\Direct3DRenderer.h" />
     <ClInclude Include="..\..\Framework3\GUI\Button.h" />
     <ClInclude Include="..\..\Framework3\GUI\CheckBox.h" />
     <ClInclude Include="..\..\Framework3\GUI\Dialog.h" />
@@ -194,12 +180,8 @@
     <ClInclude Include="..\..\Framework3\Math\Noise.h" />
     <ClInclude Include="..\..\Framework3\Math\Reorder.h" />
     <ClInclude Include="..\..\Framework3\Math\Scissor.h" />
-    <ClInclude Include="..\..\Framework3\Math\SIMD.h" />
     <ClInclude Include="..\..\Framework3\Math\SphericalHarmonics.h" />
     <ClInclude Include="..\..\Framework3\Math\Vector.h" />
-    <ClInclude Include="..\..\Framework3\OpenGL\OpenGLApp.h" />
-    <ClInclude Include="..\..\Framework3\OpenGL\OpenGLExtensions.h" />
-    <ClInclude Include="..\..\Framework3\OpenGL\OpenGLRenderer.h" />
     <ClInclude Include="..\..\Framework3\Platform.h" />
     <ClInclude Include="..\..\Framework3\Renderer.h" />
     <ClInclude Include="..\..\Framework3\Util\Array.h" />

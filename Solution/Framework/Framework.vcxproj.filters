@@ -15,12 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Framework3\Direct3D10\D3D10App.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Framework3\Direct3D10\Direct3D10Renderer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Framework3\Direct3D11\D3D11App.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -54,18 +48,6 @@
     <ClCompile Include="..\..\Framework3\Audio\Audio.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Framework3\Direct3D\D3DApp.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Framework3\Direct3D\Direct3DRenderer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Framework3\Linux\LinuxBase.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Framework3\Mac\MacBase.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Framework3\Math\Frustum.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -81,22 +63,10 @@
     <ClCompile Include="..\..\Framework3\Math\Scissor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Framework3\Math\SIMD.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Framework3\Math\SphericalHarmonics.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Framework3\Math\Vector.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Framework3\OpenGL\OpenGLApp.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Framework3\OpenGL\OpenGLExtensions.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Framework3\OpenGL\OpenGLRenderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Framework3\Util\BSP.cpp">
@@ -140,12 +110,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Framework3\Direct3D10\D3D10App.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Framework3\Direct3D10\Direct3D10Renderer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Framework3\Direct3D11\D3D11App.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -230,12 +194,6 @@
     <ClInclude Include="..\..\Framework3\Audio\vorbisfile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Framework3\Direct3D\D3DApp.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Framework3\Direct3D\Direct3DRenderer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Framework3\Math\Frustum.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -254,22 +212,10 @@
     <ClInclude Include="..\..\Framework3\Math\Scissor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Framework3\Math\SIMD.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Framework3\Math\SphericalHarmonics.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Framework3\Math\Vector.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Framework3\OpenGL\OpenGLApp.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Framework3\OpenGL\OpenGLExtensions.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Framework3\OpenGL\OpenGLRenderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Framework3\Util\Array.h">
