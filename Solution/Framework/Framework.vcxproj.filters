@@ -90,9 +90,6 @@
     <ClCompile Include="..\..\Framework3\Util\Tokenizer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Framework3\Windows\WindowsBase.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Framework3\BaseApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

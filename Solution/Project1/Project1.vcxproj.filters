@@ -18,6 +18,9 @@
     <ClCompile Include="..\..\Source\DebugApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Framework3\Windows\WindowsBase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\DebugApp.h">

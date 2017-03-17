@@ -26,11 +26,11 @@
 #include "vorbisfile.h"
 
 #ifdef _WIN32
-#  pragma comment (lib, "../Framework3/Libs/OpenAL32.lib")
-#  pragma comment (lib, "../Framework3/Libs/alut.lib")
-#  pragma comment (lib, "../Framework3/Libs/ogg_static.lib")
-#  pragma comment (lib, "../Framework3/Libs/vorbis_static.lib")
-#  pragma comment (lib, "../Framework3/Libs/vorbisfile_static.lib")
+#  pragma comment (lib, "../../Framework3/Libs/OpenAL32.lib")
+#  pragma comment (lib, "../../Framework3/Libs/alut.lib")
+#  pragma comment (lib, "../../Framework3/Libs/ogg_static.lib")
+#  pragma comment (lib, "../../Framework3/Libs/vorbis_static.lib")
+#  pragma comment (lib, "../../Framework3/Libs/vorbisfile_static.lib")
 #endif
 
 Audio::Audio(){
