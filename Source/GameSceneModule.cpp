@@ -1,5 +1,6 @@
 #include "GameSceneModule.h"
 #include <random>
+#include <algorithm>
 GameSceneModule::GameSceneModule()
 {
 	for (int i = 0; i < 4; i++)
@@ -26,8 +27,8 @@ GameSceneModule::GameSceneModule()
 		Actor* pActor = new Actor();
 		m_actorPool.push_back(pActor);
 		m_actorUpdateList.push_back(pActor);
-	}
-	
+		gamescenehelper::AssignActorToRandomRegion(pActor, m_regionPool);
+	}	
 }
 
 GameSceneModule::~GameSceneModule()
@@ -66,7 +67,16 @@ void Actor::Update()
 	//TODO create action and assign timeTillNextUpdate
 	int randInt = rand();
 	float randZero2One = randInt / RAND_MAX;
-
+	if (randZero2One > 0.5f)
+	{
+		//create move command
+		MoveAction move;
+		move.pOrigActor = this;
+	}
+	else
+	{
+		//create dual command
+	}
 }
 //Region class
 Region::Region()
@@ -77,4 +87,28 @@ Region::Region()
 Region::~Region()
 {
 
+}
+
+
+//helper funcitons
+void gamescenehelper::AssignActorToRandomRegion(Actor* pActor, std::vector<Region*> &regionList)
+{
+	//get random current region
+	size_t size = regionList.size();
+	int randInt = rand();
+	size_t randIdx = size * (randInt / RAND_MAX);
+	Region* randRegion = regionList[randIdx];
+
+	//remove actor from previous region
+	Region* prevRegion = pActor->m_currentRegion;
+	prevRegion->m_withinActors.erase(
+		std::remove(prevRegion->m_withinActors.begin(),
+			prevRegion->m_withinActors.end(),
+			pActor));
+
+	//add actor to new region
+	randRegion->m_withinActors.push_back(pActor);
+
+	//assign current region
+	pActor->m_currentRegion = randRegion;
 }

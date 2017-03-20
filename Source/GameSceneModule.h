@@ -33,6 +33,7 @@ public:
 	~Region();
 	int m_regionId;
 	std::vector<Region*> m_adjRegions;
+	std::vector<Actor*> m_withinActors;
 };
 
 enum EActionType
@@ -49,21 +50,24 @@ struct Action
 
 struct MoveAction : Action
 {
-	MoveAction(Region* _destRegion)
+	MoveAction()
 	{
 		eAction = EActionType::EAction_Move;
-		pDestRegion = _destRegion;
 	}
 	Region* pDestRegion;
 };
 
 struct DuelAction : Action
 {
-	DuelAction(Actor* _actor)
+	DuelAction()
 	{
 		eAction = EActionType::EAction_Duel;
-		pDestActor = _actor;
 	}
 	Actor* pDestActor;
+};
+
+namespace gamescenehelper
+{
+	void AssignActorToRandomRegion(Actor* pAction, std::vector<Region*> &regionList);
 };
 #endif
