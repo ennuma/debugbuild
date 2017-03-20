@@ -9,8 +9,9 @@ public:
     ~GameSceneModule();
 	void WorldTick(time_t deltaTime);
 private:
-	std::vector<Actor*> actorUpdateList;
-	std::vector<Actor*> actorPool;
+	std::vector<Actor*> m_actorUpdateList;
+	std::vector<Actor*> m_actorPool;
+	std::vector<Region*> m_regionPool;
 };
 
 class Actor
@@ -18,6 +19,11 @@ class Actor
 public:
 	Actor();
 	~Actor();
+	std::vector<std::pair<Actor*, int>> relationKinsMap;
+	std::vector<std::pair<Actor*, int>> relationMap;
+	float timeTillNextUpdate;
+	void Update(); // assign timeTillNextUpdate
+	Region* m_currentRegion;
 };
 
 class Region
@@ -25,6 +31,8 @@ class Region
 public:
 	Region();
 	~Region();
+	int m_regionId;
+	std::vector<Region*> m_adjRegions;
 };
 
 enum EActionType
