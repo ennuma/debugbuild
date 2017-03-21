@@ -4,6 +4,22 @@
 #include <assert.h>
 extern GameSceneModule* g_sceneMod;
 
+void InfoMsg(const char *string, ...) {
+	ASSERT(string);
+
+	//Eval the string
+	const unsigned BUFFER_SIZE = 1024;
+	char buf[BUFFER_SIZE];
+
+	va_list arglist;
+	va_start(arglist, string);
+	vsprintf_s(buf, BUFFER_SIZE, string, arglist);
+	va_end(arglist);
+	{
+		outputDebugString(buf);
+	}
+}
+
 GameSceneModule::GameSceneModule()
 {
 	for (int i = 0; i < 4; i++)
@@ -25,14 +41,16 @@ GameSceneModule::GameSceneModule()
 		}
 	}
 
-	for (int i = 0; i < 100; i++)
+	for (int i = 0; i < 10; i++)
 	{
 		Actor* pActor = new Actor();
+		pActor->m_actorId = i;
+		pActor->m_strength = (int) (100.0f*(float(rand())/float(RAND_MAX))); //0-100
 		m_actorPool.push_back(pActor);
 		m_actorUpdateList.push_back(pActor);
 		gamescenehelper::AssignActorToRandomRegion(pActor, m_regionPool);
 		//assigne callback func
-		pActor->Callback_AddAction = &(g_sceneMod->AddAction);
+		pActor->Callback_AddAction = &GameSceneModule::AddAction;
 	}	
 }
 
@@ -48,7 +66,7 @@ GameSceneModule::~GameSceneModule()
 	}
 }
 
-void GameSceneModule::WorldTick(time_t deltaTime)
+void GameSceneModule::WorldTick(float deltaTime)
 {
 	for each (auto var in m_actorUpdateList)
 	{
@@ -60,15 +78,34 @@ void GameSceneModule::WorldTick(time_t deltaTime)
 	}
 }
 
-//bool GameSceneModule::ActionIsValid(Action* in_pAction)
-//{
-//	return true;
-//}
-
-
-void GameSceneModule::ExecuteAction(Action* in_pAction, time_t in_deltaTime)
+bool GameSceneModule::ActionIsValid(Action* in_pAction)
 {
-	//if (!ActionIsValid(in_pAction))
+	switch (in_pAction->eAction)
+	{
+	case EAction_Move:
+	{
+		MoveAction* pMove = static_cast<MoveAction*>(in_pAction);
+		if (!pMove->pOrigActor->isAlive)
+			return false;
+		break;
+	}
+	case EAction_Duel:
+	{
+		DuelAction* pDuel = static_cast<DuelAction*>(in_pAction);
+		if (!pDuel->pOrigActor->isAlive || !pDuel->pDestActor->isAlive)
+			return false;
+		break;
+	}
+	default:
+		break;
+	}
+	return true;
+}
+
+
+void GameSceneModule::ExecuteAction(Action* in_pAction, float in_deltaTime)
+{
+	if (!ActionIsValid(in_pAction))
 	{
 		delete in_pAction;
 		return;
@@ -79,15 +116,52 @@ void GameSceneModule::ExecuteAction(Action* in_pAction, time_t in_deltaTime)
 		switch (in_pAction->eAction)
 		{
 		case EAction_Move:
-			in_pAction->pOrigActor->m_currentRegion->m_withinActors.erase(
+		{
+			MoveAction* pMove = static_cast<MoveAction*>(in_pAction);
+
+			pMove->pOrigActor->m_currentRegion->m_withinActors.erase(
 				std::remove(
-					in_pAction->pOrigActor->m_currentRegion->m_withinActors.begin(),
-					in_pAction->pOrigActor->m_currentRegion->m_withinActors.end(),
-					in_pAction->pOrigActor));
-			in_pAction->pOrigActor->m_currentRegion = static_cast<MoveAction*>(in_pAction)->pDestRegion;
-			static_cast<MoveAction*>(in_pAction)->pDestRegion->m_withinActors.push_back(in_pAction->pOrigActor);
+					pMove->pOrigActor->m_currentRegion->m_withinActors.begin(),
+					pMove->pOrigActor->m_currentRegion->m_withinActors.end(),
+					pMove->pOrigActor));
+			pMove->pOrigActor->m_currentRegion = pMove->pDestRegion;
+			pMove->pDestRegion->m_withinActors.push_back(in_pAction->pOrigActor);
+
+			InfoMsg("Actor Id %i :	Move to	Region Id %i\n",
+				in_pAction->pOrigActor->m_actorId,
+				pMove->pDestRegion->m_regionId);
 			break;
+		}
 		case EAction_Duel:
+		{
+			DuelAction* pDuel = static_cast<DuelAction*>(in_pAction);
+			if (pDuel->pOrigActor->m_strength > pDuel->pDestActor->m_strength)
+			{
+				pDuel->pDestActor->isAlive = false;
+				pDuel->pDestActor->m_currentRegion->m_withinActors.erase(
+					std::remove(
+						pDuel->pOrigActor->m_currentRegion->m_withinActors.begin(),
+						pDuel->pOrigActor->m_currentRegion->m_withinActors.end(),
+						pDuel->pOrigActor));
+				InfoMsg("Actor Id %i vs Actor Id %i :	Actor Id %i dead\n",
+					pDuel->pOrigActor->m_actorId,
+					pDuel->pDestActor->m_actorId,
+					pDuel->pDestActor->m_actorId);
+			}
+			else
+			{
+				pDuel->pOrigActor->isAlive = false;
+				pDuel->pOrigActor->m_currentRegion->m_withinActors.erase(
+					std::remove(
+						pDuel->pOrigActor->m_currentRegion->m_withinActors.begin(),
+						pDuel->pOrigActor->m_currentRegion->m_withinActors.end(),
+						pDuel->pOrigActor));
+				InfoMsg("Actor Id %i vs Actor Id %i :	Actor Id %i dead\n",
+					pDuel->pOrigActor->m_actorId,
+					pDuel->pDestActor->m_actorId,
+					pDuel->pOrigActor->m_actorId);
+			}
+		}
 			break;
 		default:
 			break;
@@ -112,9 +186,10 @@ Actor::~Actor()
 
 }
 
-void Actor::Update(time_t deltaTime)
+void Actor::Update(float deltaTime)
 {
-	if (!isAlive)
+	timeTillNextUpdate -= deltaTime;
+	if (!isAlive || timeTillNextUpdate>0)
 	{
 		return;
 	}
@@ -157,6 +232,9 @@ void Actor::Update(time_t deltaTime)
 			assert(0);
 		}
 	}
+
+	//reset timer and queue for next action
+	timeTillNextUpdate = float(rand()) / float(RAND_MAX) * 4.0f;
 }
 //Region class
 Region::Region()
@@ -176,12 +254,13 @@ void gamescenehelper::AssignActorToRandomRegion(Actor* pActor, std::vector<Regio
 	//get random current region
 	size_t size = regionList.size();
 	int randInt = rand();
-	size_t randIdx = size * (randInt / RAND_MAX);
+	size_t randIdx = size_t(size * (float(randInt) / float(RAND_MAX)));
 	Region* randRegion = regionList[randIdx];
 
 	//remove actor from previous region
 	Region* prevRegion = pActor->m_currentRegion;
-	prevRegion->m_withinActors.erase(
+	if(prevRegion!=nullptr)
+		prevRegion->m_withinActors.erase(
 		std::remove(prevRegion->m_withinActors.begin(),
 			prevRegion->m_withinActors.end(),
 			pActor));
