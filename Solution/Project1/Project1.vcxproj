@@ -21,9 +21,11 @@
   <ItemGroup>
     <ClCompile Include="..\..\Framework3\Windows\WindowsBase.cpp" />
     <ClCompile Include="..\..\Source\DebugApp.cpp" />
+    <ClCompile Include="..\..\Source\GameSceneModule.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\DebugApp.h" />
+    <ClInclude Include="..\..\Source\GameSceneModule.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{6F82A762-8938-47AF-905B-080FF505362D}</ProjectGuid>

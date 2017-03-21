@@ -2,6 +2,7 @@
 
 //init global app that gets operated in main loop
 BaseApp *app = new DebugApp();
+GameSceneModule *g_sceneMod = new GameSceneModule();
 
 DebugApp::DebugApp()
 {
@@ -16,7 +17,6 @@ DebugApp::~DebugApp()
 bool DebugApp::init()
 {
 	if (!_parent::initAPI()) return false;
-	m_sceneMod = new GameSceneModule();
 	//StarLab
 	QueryPerformanceCounter(&lastDrawTime);
 	LARGE_INTEGER freq;
@@ -27,7 +27,6 @@ bool DebugApp::init()
 
 void DebugApp::exit()
 {
-	delete m_sceneMod;
 	_parent::exitAPI();
 }
 
@@ -43,5 +42,5 @@ void  DebugApp::drawFrame()
 	LONGLONG iDelta = currentTime.QuadPart - lastDrawTime.QuadPart;
 	lastDrawTime = currentTime;
 	float fDeltaTime = float(iDelta) * fTickToSec;
-	m_sceneMod->WorldTick(fDeltaTime);
+	g_sceneMod->WorldTick(fDeltaTime);
 }

@@ -21,9 +21,15 @@
     <ClCompile Include="..\..\Framework3\Windows\WindowsBase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\GameSceneModule.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\DebugApp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\GameSceneModule.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

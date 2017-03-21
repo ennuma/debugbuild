@@ -2,40 +2,9 @@
 #define GAMESCENEMODULE
 #include <time.h>
 #include <vector>
-class GameSceneModule
-{
-public:
-	GameSceneModule();
-    ~GameSceneModule();
-	void WorldTick(time_t deltaTime);
-private:
-	std::vector<Actor*> m_actorUpdateList;
-	std::vector<Actor*> m_actorPool;
-	std::vector<Region*> m_regionPool;
-};
-
-class Actor
-{
-public:
-	Actor();
-	~Actor();
-	std::vector<std::pair<Actor*, int>> relationKinsMap;
-	std::vector<std::pair<Actor*, int>> relationMap;
-	float timeTillNextUpdate;
-	void Update(); // assign timeTillNextUpdate
-	Region* m_currentRegion;
-};
-
-class Region
-{
-public:
-	Region();
-	~Region();
-	int m_regionId;
-	std::vector<Region*> m_adjRegions;
-	std::vector<Actor*> m_withinActors;
-};
-
+class Region;
+class Actor;
+class GameSceneModule;
 enum EActionType
 {
 	EAction_Move,
@@ -46,6 +15,7 @@ struct Action
 {
 	EActionType eAction;
 	Actor* pOrigActor;
+	float fExecutionTime;
 };
 
 struct MoveAction : Action
@@ -66,8 +36,48 @@ struct DuelAction : Action
 	Actor* pDestActor;
 };
 
+class Actor
+{
+public:
+	Actor();
+	~Actor();
+	std::vector<std::pair<Actor*, int>> relationKinsMap;
+	std::vector<std::pair<Actor*, int>> relationMap;
+	float timeTillNextUpdate;
+	void Update(time_t deltaTime); // assign timeTillNextUpdate
+	Region* m_currentRegion;
+	void (GameSceneModule::*Callback_AddAction)(Action* in_pAction); //define function pointer to member func
+	bool isAlive;
+};
+
+class Region
+{
+public:
+	Region();
+	~Region();
+	int m_regionId;
+	std::vector<Region*> m_adjRegions;
+	std::vector<Actor*> m_withinActors;
+};
+
 namespace gamescenehelper
 {
 	void AssignActorToRandomRegion(Actor* pAction, std::vector<Region*> &regionList);
+};
+
+class GameSceneModule
+{
+public:
+	GameSceneModule();
+	~GameSceneModule();
+	void WorldTick(time_t deltaTime);
+	void AddAction(Action* in_pAction);
+private:
+	std::vector<Actor*> m_actorUpdateList;
+	std::vector<Actor*> m_actorPool;
+	std::vector<Region*> m_regionPool;
+	std::vector<Action*> m_actionExecutionList;
+	void ExecuteAction(Action* in_pAction, time_t in_deltaTime);
+	//bool ActionIsValid(Action* in_pAction);
 };
 #endif
