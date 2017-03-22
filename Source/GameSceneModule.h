@@ -17,6 +17,7 @@ struct Action
 	EActionType eAction;
 	Actor* pOrigActor;
 	float fExecutionTime;
+	bool bIsDone;
 };
 
 struct MoveAction : Action
@@ -42,15 +43,15 @@ class Actor
 public:
 	Actor();
 	~Actor();
-	std::vector<std::pair<Actor*, int>> relationKinsMap;
-	std::vector<std::pair<Actor*, int>> relationMap;
-	float timeTillNextUpdate;
-	void Update(float deltaTime); // assign timeTillNextUpdate
 	int m_actorId;
 	Region* m_currentRegion;
-	void (GameSceneModule::*Callback_AddAction)(Action* in_pAction); //define function pointer to member func
 	bool isAlive;
 	int m_strength;
+	float timeTillNextUpdate;
+	void Update(float deltaTime); // assign timeTillNextUpdate
+	void (GameSceneModule::*Callback_AddAction)(Action* in_pAction); //define function pointer to member func
+	std::vector<std::pair<Actor*, int>> relationKinsMap;
+	std::vector<std::pair<Actor*, int>> relationMap;
 };
 
 class Region

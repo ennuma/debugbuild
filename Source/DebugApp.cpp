@@ -16,7 +16,7 @@ DebugApp::~DebugApp()
 
 bool DebugApp::init()
 {
-	if (!_parent::initAPI()) return false;
+	//if (!_parent::initAPI()) return false;
 	//StarLab
 	QueryPerformanceCounter(&lastDrawTime);
 	LARGE_INTEGER freq;
@@ -27,7 +27,7 @@ bool DebugApp::init()
 
 void DebugApp::exit()
 {
-	_parent::exitAPI();
+	//_parent::exitAPI();
 }
 
 char* DebugApp::getTitle() const
